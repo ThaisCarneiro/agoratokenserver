@@ -1,0 +1,24 @@
+{
+  "name": "agoratokenserver",
+  "version": "1.0.0",
+  "description": "Web Server to provide Token to Agora IO Services",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start" : "PORT=8080 APP_ID=3f98d7eba3f04930a0536a51dff596aa APP_CERTIFICATE=7c16e8ffada741118a8affcf54d1efa9 node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ThaisCarneiro/agoratokenserver.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ThaisCarneiro/agoratokenserver/issues"
+  },
+  "homepage": "https://github.com/ThaisCarneiro/agoratokenserver#readme",
+  "dependencies": {
+    "agora-access-token": "^2.0.4",
+    "express": "^4.17.1"
+  }
+}
