@@ -55,11 +55,6 @@ const generateAccessToken = (req, resp) => {
 const generateAccessTokenRTM = (req, resp) => {
     resp.header('Access-Control-Allow-Origin', '*');
 
-    const channelName = req.query.channelName;
-    if (!channelName) {
-        return resp.status(500).json({'error': 'channel is required'});
-    }
-
     // get uid 
     let uid = req.query.uid;
     if (!uid || uid == '') {
