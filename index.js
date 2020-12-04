@@ -1,11 +1,17 @@
+#!/usr/bin/env 
 const express = require('express');
+const https = require("https"), fs = require("fs");
 const {RtcTokenBuilder, RtmTokenBuilder, RtcRole} = require('agora-access-token');
 
-const PORT = process.env.PORT;
-const APP_ID = process.env.APP_ID;
-const APP_CERTIFICATE = process.env.APP_CERTIFICATE;
+const PORT = 8080;
+const APP_ID = "3f98d7eba3f04930a0536a51dff596aa"
+const APP_CERTIFICATE = "7c16e8ffada741118a8affcf54d1efa9";
 
 const app = express();
+const options = {
+  key: fs.readFileSync("/etc/letsencrypt/live/dewagitexvr.com/privkey.pem"),
+  cert: fs.readFileSync("/etc/letsencrypt/live/dewagitexvr.com/fullchain.pem")
+};
 
 //apply the response headers, that force the browser to never cache the response so we ensure we always get a fresh token
 const nocache = (req, resp, next) => {
@@ -90,7 +96,13 @@ app.get('/access_token_rtc', nocache, generateAccessToken);
 app.get('/access_token_rtm', nocache, generateAccessTokenRTM);
 
 //lister method: callback once the server is ready and listening on the given port
-app.listen(PORT, () => {
+/*app.listen(PORT, () => {
+    console.log(`Listening on port: ${PORT}`);
+});
+ * 
+ */
+
+https.createServer(options, app).listen(PORT, () => {
     console.log(`Listening on port: ${PORT}`);
 });
 
