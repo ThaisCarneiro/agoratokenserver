@@ -1,4 +1,4 @@
-#!/usr/bin/env 
+#!/usr/bin/env node 
 const express = require('express');
 const https = require("https"), fs = require("fs");
 const {RtcTokenBuilder, RtmTokenBuilder, RtcRole} = require('agora-access-token');
